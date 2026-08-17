@@ -5,6 +5,7 @@ import connectDB from './config/db.js';
 // Import Controllers directly
 import { registerUser, loginUser } from './controllers/authController.js';
 import { getAllUsers, getSingleUser, updateUser, deleteUser } from './controllers/userController.js';
+import { getAllProducts, getSingleProduct, createProduct, updateProduct, deleteProduct } from './controllers/productController.js';
 
 // Load env vars
 dotenv.config();
@@ -28,6 +29,13 @@ app.get('/api/users', getAllUsers);
 app.get('/api/users/:id', getSingleUser);
 app.put('/api/users/:id', updateUser);
 app.delete('/api/users/:id', deleteUser);
+
+// Product CRUD Routes
+app.post('/api/products', createProduct);
+app.get('/api/products', getAllProducts);
+app.get('/api/products/:id', getSingleProduct);
+app.put('/api/products/:id', updateProduct);
+app.delete('/api/products/:id', deleteProduct);
 
 // Basic homepage route
 app.get('/', (req, res) => {
