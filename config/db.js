@@ -9,10 +9,15 @@ dns.setServers(['8.8.8.8', '8.8.4.4']);
 
 const connectDB = async () => {
     try {
-        console.log('Connecting to MongoDB...');
-        console.log('MONGO_URI loaded:', !!process.env.MONGO_URI);
+        // Sanitize URI — strip whitespace and any surrounding quotes added by Railway
+        const rawURI = process.env.MONGO_URI || '';
+        const uri = rawURI.trim().replace(/^['"]|['"]$/g, '');
 
-        await mongoose.connect(process.env.MONGO_URI);
+        console.log('Connecting to MongoDB...');
+        console.log('MONGO_URI loaded:', !!uri);
+        console.log('MONGO_URI starts with:', uri.substring(0, 20));
+
+        await mongoose.connect(uri);
 
         console.log('MongoDB Connected successfully!');
     } catch (error) {
