@@ -1,7 +1,5 @@
-// API Base Configuration - Route requests to Railway backend when hosting on localhost or Vercel
-const API_BASE_URL = window.location.origin.includes('localhost') || window.location.origin.includes('127.0.0.1') || window.location.origin.includes('vercel.app')
-  ? 'https://authentication-production-152b.up.railway.app/api'
-  : `${window.location.origin}/api`;
+// API Base Configuration - Pointing to the Railway backend instance
+const API_BASE_URL = 'https://authentication-production-152b.up.railway.app/api';
 
 // Application State
 let currentUser = null;
