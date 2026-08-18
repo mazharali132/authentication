@@ -1,5 +1,5 @@
-// API Base Configuration - Fallback to hosted API url if running locally on static server, or use same-origin relative paths.
-const API_BASE_URL = window.location.origin.includes('localhost') || window.location.origin.includes('127.0.0.1')
+// API Base Configuration - Route requests to Railway backend when hosting on localhost or Vercel
+const API_BASE_URL = window.location.origin.includes('localhost') || window.location.origin.includes('127.0.0.1') || window.location.origin.includes('vercel.app')
   ? 'https://authentication-production-152b.up.railway.app/api'
   : `${window.location.origin}/api`;
 
